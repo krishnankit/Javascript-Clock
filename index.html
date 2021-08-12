@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clock</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet"> 
+  <style>
+    body {
+      background-color: black;
+    }
+
+    .clock {
+      color: coral;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 60px;
+      font-family: 'Orbitron';
+      letter-spacing: 10px;
+    }
+  </style>
+
+</head>
+  <body onload="showTime()">
+    <div id="my-clock-display" class="clock"></div>
+    <script>
+      function showTime() {
+      let now = new Date();
+      let seconds = now.getSeconds();
+      let minutes = now.getMinutes();
+      let hours = now.getHours();
+      let meridian = "AM";
+      if (hours > 12) {
+        hours = hours - 12;
+        meridian = "PM";
+      }
+      if (hours < 10) {
+        hours = "0" + hours;
+      }
+      if (minutes < 10) {
+        minutes = "0" + minutes;
+      }
+      if (seconds < 10) {
+        seconds = "0" + seconds;
+      }
+      let time = hours + ":" + minutes + ":" + seconds + " " + meridian;
+      document.querySelector("#my-clock-display").innerHTML = time;
+      setTimeout(showTime, 985);
+      }
+      </script>
+  </body>
+</html>
